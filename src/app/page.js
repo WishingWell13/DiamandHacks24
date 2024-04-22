@@ -2,21 +2,15 @@ import FileGetter from "./components/FileGetter";
 import Waves from "./components/Waves";
 import styles from "./page.module.css";
 
+// Homepage.
 export default function Home() {
-
-  
-
   return (
     <main className={`${styles.main}`}>
+      {/* FileGetter contains most functionality and user input */}
       <FileGetter></FileGetter>
+      {/* Waves holds the animation of rolling waves displayed in the backgorund */}
       <Waves />
-
     </main>
   );
 }
-
-
-
-// Image types: https://ai.google.dev/docs/gemini_api_overview#image_requirements
-// Get Input Value: https://bobbyhadz.com/blog/react-get-input-value
 

@@ -55,21 +55,7 @@
 .background {
   background-color: #c9d5e3b7;
 }
-/*
-.buttonSelectFile{ 
-  background-color: #E5F2F4;
-  border: 2px solid #333c65;
-  border-radius: 1rem;
-  inline-size: 12rem;
-  block-size: 4rem;
-  font-size: 1.25rem;
-  justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-family: aye-matey;
-  font-weight: bold;
-}
-*/
+
 .button {
   background-color: #509fb5;
   border: 2px solid #333c65;

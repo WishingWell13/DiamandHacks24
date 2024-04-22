@@ -18,7 +18,6 @@ section{
   pointer-events: none;
   width: 100%;
   height: 100vh;
-  /* background: #E5F2F4; */
   overflow: hidden;
   bottom: 0;
 }

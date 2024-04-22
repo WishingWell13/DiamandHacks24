@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Waves from "./components/Waves";
 
 const inter = Inter({ subsets: ["latin"] });
 

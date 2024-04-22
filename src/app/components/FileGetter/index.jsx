@@ -3,7 +3,6 @@
 import styles from "./style.module.css";
 import { useEffect, useState, useRef } from "react";
 import { GoogleGenerativeAI} from "@google/generative-ai";
-import Waves from "../Waves";
 
 
 const FileGetter = () => {
@@ -37,10 +36,7 @@ const FileGetter = () => {
 
     async function run() {
       try{
-        // For text-and-images input (multimodal), use the gemini-pro-vision model
-        
         const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
-  
   
         const fileInputEl = document.querySelector("input[type=file]");
         const imageParts = await Promise.all(
@@ -51,7 +47,6 @@ const FileGetter = () => {
         const result = await model.generateContent([prompt, ...imageParts]);
         const response = await result.response;
         const text = response.text();
-        // console.log(text);
         await console.log(`Parsed ${parsePercentage(text, imageParts)}`);
         setPercentage(parsePercentage(text, imageParts));
         setOutput(text);
@@ -62,11 +57,9 @@ const FileGetter = () => {
             console.log("no image or ran out of tokens bb");
             return;
           }
-          // await new Promise(r => setTimeout(r, 2000));
 
           console.log(error.name);
 
-          //setOutput(output+'.');
           console.log(`Errored ${error.message}`);
           
           await run();
@@ -109,13 +102,6 @@ const FileGetter = () => {
         <div className={styles.header2}>check if your messages are likely spam!</div> 
         </h1>
 
-        {/* {percentage ? 
-          <div className={styles.card}>
-            <h2 className={styles.card_title}>{percentage}%</h2>
-            <p className={styles.card_price}>likely to be a scam</p>
-          </div>
-          : null} */}
-
         {percentage ? (
           (parseInt(percentage) > 75) ? 
             <div className={styles.card} style={{backgroundColor: "#EEC01B"}}> 
@@ -134,13 +120,13 @@ const FileGetter = () => {
           : null }
         
         <label htmlFor="file-upload">
-          select file
+          Select file
           <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
               onChange={() => 
                 {
                   setFile(URL.createObjectURL(inputRef.current.files[0])); 
                   setPressed(false);
-                  setOutput("Press the 'get pirate opinion' button!");
+                  setOutput("Press the 'Get pirate opinion' button!");
                 }
               }
               ref={inputRef}>
@@ -155,10 +141,10 @@ const FileGetter = () => {
         : null}
 
       <br></br>
-      <button className={styles.button} onClick={() => {setPressed(true)}}>get pirate's opinion!</button>
+      <button className={styles.button} onClick={() => {setPressed(true)}}>Get pirate's opinion!</button>
       <br></br>
       <h3>Depending on your device:</h3>
-      <p className={`${styles.textOutput} ${styles.background}`}>
+      <div className={`${styles.textOutput} ${styles.background}`}>
         <ol>
           <li>Get an image of your suspicous chat logs!
             <ul>
@@ -167,11 +153,11 @@ const FileGetter = () => {
               to take a screenshot of the text message and save it.</li>
             </ul>
           </li>  
-          <li>Click on the "select file" button and select your text message.</li>
-          <li>Click on "get pirate's opinion" to analyze your text message.</li>
+          <li>Click on the "Select file" button and select your text message.</li>
+          <li>Click on "Get pirate's opinion" to analyze your text message.</li>
           <li>Profit! Now you know the chance your text message is a scam and you can act accordingly!</li>
         </ol>
-      </p>
+      </div>
     </div>
   );
 
